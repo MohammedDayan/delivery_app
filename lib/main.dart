@@ -1,8 +1,15 @@
 import 'package:delivery_app/signin.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
+import 'constants/app_theme.dart';
+
 void main() {
-  runApp(const MyApp());
+  DevicePreview(
+    enabled: false,
+    builder: (context) => const MyApp(),
+  );
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Delivery App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: themeData(),
       home: SignIn(),
+      // home: const DashBoard(),
     );
   }
 }
