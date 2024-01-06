@@ -36,8 +36,10 @@ class DashBoardGridCard extends StatelessWidget {
               child: Text(
                 name,
                 textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             )
           ],

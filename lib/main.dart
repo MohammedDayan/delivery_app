@@ -1,14 +1,15 @@
-import 'package:delivery_app/signin.dart';
+import 'package:delivery_app/constants/app_routes.dart';
+import 'package:delivery_app/screens/dashboard_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/app_theme.dart';
 
 void main() {
-  DevicePreview(
-    enabled: false,
+  runApp(DevicePreview(
+    enabled: true,
     builder: (context) => const MyApp(),
-  );
+  ));
   // runApp(const MyApp());
 }
 
@@ -19,11 +20,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // locale: DevicePreview.locale(context), // Add the locale here
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Delivery App',
       theme: themeData(),
-      home: SignIn(),
-      // home: const DashBoard(),
+      routes: AppRoutes().getRoutes(),
+      // home: SignInScreen(),
+      home: const DashBoardScreen(),
     );
   }
 }

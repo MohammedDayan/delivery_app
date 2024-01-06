@@ -1,44 +1,49 @@
-import 'package:delivery_app/signin.dart';
+import 'package:delivery_app/screens/signup_screen.dart';
+import 'package:delivery_app/widgets/inputfield.dart';
 import 'package:delivery_app/widgets/passwordinput.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
 
-import '../widgets/inputfield.dart';
+// import '../auth/authentication.dart';
 
-class signup extends StatelessWidget {
-  signup({super.key});
+class SignInScreen extends StatelessWidget {
+  static const routeName = "/signin_screen";
+
+  SignInScreen({super.key});
   final TextEditingController email = TextEditingController();
 
   final Map<String, String> forminputs = {
-    'firstname': '',
-    'lastname': '',
     'email': '',
     'password': '',
-    'confirmpassword': '',
   };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 165, 200, 229),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
-              color: Colors.white,
               child: Column(
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: 40,
                   ),
                   Container(
-                      height: 100, width: 100, child: Center(child: Text(""))),
-                  SizedBox(
-                    height: 10,
-                  ),
+                      child: Center(
+                          child: Column(
+                    children: [
+                      Text(
+                        "Hello Again",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      Text("Welcome back you've been missed!"),
+                    ],
+                  ))),
                   Center(
                     child: Text(
-                      "Create New Account",
+                      "",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ),
                   Padding(
@@ -54,24 +59,12 @@ class signup extends StatelessWidget {
                             ),
                             inputField(
                               onChanged: (value) => forminputs['email'] = value,
-                              hintText: "Enter email",
+                              hintText: "Enter username",
                             ),
-                            inputField(
-                                onChanged: (value) =>
-                                    forminputs['firstname'] = value,
-                                hintText: "First Name"),
-                            inputField(
-                                onChanged: (value) =>
-                                    forminputs['lastname'] = value,
-                                hintText: "Last Name"),
                             passwordinputField(
                                 onChanged: (value) =>
                                     forminputs['password'] = value,
-                                hintText: "Enter password"),
-                            passwordinputField(
-                                onChanged: (value) =>
-                                    forminputs['confirmpassword'] = value,
-                                hintText: "Confirm password"),
+                                hintText: "Password"),
                             SizedBox(
                               height: 10,
                             ),
@@ -87,14 +80,23 @@ class signup extends StatelessWidget {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             backgroundColor: Color.fromARGB(195, 176, 0, 0)),
                         onPressed: () {
-                          print(forminputs);
+                          //after auth logic
+                          //need to change this to named routes later
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => ChatScreen()));
+
+                          // forminputs
+
+                          ;
                         },
                         child: Text(
-                          "Signup",
+                          "Login",
                           style: TextStyle(color: Colors.white),
                         )),
                   )),
@@ -115,9 +117,7 @@ class signup extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-                      onPressed: () {
-                        print("hi");
-                      },
+                      onPressed: () async {},
                       child: IntrinsicWidth(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -127,10 +127,10 @@ class signup extends StatelessWidget {
                                 width: 20,
                                 child: Image.asset(
                                     "assets/images/google-icon.png")),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
-                            Text(
+                            const Text(
                               "Continue with Google",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 0, 97, 176)),
@@ -141,27 +141,29 @@ class signup extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Already have an account ? ",
+                        "Dont have account yet? ",
                         style: TextStyle(
                           fontSize: 14,
                         ),
                       ),
                       InkResponse(
                         onTap: () {
-                          print("smth tapped");
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignIn()));
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => SignUpScreen(),
+                          //   ),
+                          // );
+                          Navigator.pushNamed(context, SignUpScreen.routeName);
                         },
                         child: Text(
-                          "Login",
+                          "Register",
                           style: TextStyle(
                             color: Color.fromARGB(255, 0, 97, 176),
                             decoration: TextDecoration.underline,
@@ -170,10 +172,7 @@ class signup extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  )
                 ],
               ),
             ),

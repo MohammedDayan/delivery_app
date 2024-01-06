@@ -2,29 +2,37 @@ import 'package:delivery_app/widgets/dashboard_grid_card.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
-class DashBoard extends StatelessWidget {
-  const DashBoard({super.key});
+class DashBoardScreen extends StatelessWidget {
+  static const routeName = "/dashboard_screen";
+
+  const DashBoardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      // appBar: AppBar(
-      //   leading: Padding(
-      //     padding: const EdgeInsets.only(left: 13.0),
-      //     child: CustomBackButton(
-      //       backgroundColor: color.background,
-      //     ),
-      //   ),
-      //   title: const Text(
-      //     'User',
-      //     style: TextStyle(
-      //         fontSize: 17,
-      //         fontWeight: FontWeight.w600,
-      //         color: Colors.lightBlue),
-      //   ),
-      //   centerTitle: true,
-      // ),
+      appBar: AppBar(
+        title: Text(
+          'John Doe',
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+            color: color.secondary,
+          ),
+        ),
+        centerTitle: false,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.message_outlined,
+              color: color.secondary,
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: GridView.count(
@@ -32,11 +40,11 @@ class DashBoard extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 15,
           mainAxisSpacing: 25,
-          childAspectRatio: 3 / 4,
+          childAspectRatio: 4 / 5,
           children: [
             DashBoardGridCard(
               icon: IconlyLight.calendar,
-              name: "Account Information",
+              name: "Calender",
               // function: () {
               //   Navigator.pushNamed(context, AccountInfo.routeName);
               // },
@@ -44,28 +52,28 @@ class DashBoard extends StatelessWidget {
             ),
             DashBoardGridCard(
               icon: Icons.local_grocery_store_outlined,
-              name: "Password",
+              name: "Groceries",
               function: () {},
             ),
             DashBoardGridCard(
               icon: IconlyLight.location,
-              name: "Orders",
+              name: "Location",
               function: () {},
             ),
             DashBoardGridCard(
               icon: IconlyLight.notification,
-              name: "Wishlist",
+              name: "Activities",
               function: () {},
             ),
             DashBoardGridCard(
               icon: Icons.checklist_outlined,
-              name: "Settings",
+              name: "To do",
               function: () {
                 //todo:Navigate to settings screen
               },
             ),
             DashBoardGridCard(
-              name: "Dark Mode",
+              name: "Settings",
               icon: Icons.settings,
               function: () {},
             )
